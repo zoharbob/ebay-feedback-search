@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eBay Feedback Search</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="/css/sweetalert2.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/search.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/Loader/src/loadingoverlay.min.js"></script>
+    <script src="js/Loader/extras/loadingoverlay_progress/loadingoverlay_progress.min.js"></script>
+    <script src="/js/sweetalert2.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+
+<div id="container">
+
+    <button class="btn btn-secondary" id="btn_inst" onclick="inst();">How To Use?</button>
+    <h1><span>eBay</span> Feedback Search</h1>
+
+   <form action="url_analyse">
+       <div class="col-lg-6">
+
+           <div class="input-group">
+
+               <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="method_select" id="inlineFormCustomSelect">
+                   <option value="3">Standard Search (Quick)</option>
+                   <option value="10">Medium Search (Long)</option>
+                   <option value="20">Deep Search (Very Long)</option>
+               </select>
+
+               <input type="text" name="url_input" class="form-control" value="<%= url_to_search %>"
+                      required placeholder="Place the URL here">
+
+              <span class="input-group-btn">
+                    <button class="btn btn-secondary">Go!</button>
+              </span>
+
+           </div>
+
+       </div>
+   </form>
+</div>
+
+<div class="loader"></div>
+
+<%- body %>
+
+</body>
+</html>

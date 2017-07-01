@@ -1,0 +1,40 @@
+
+<div id="container_search">
+    <!--<script>-->
+        <!--$('.form-control').val("zohar")-->
+    <!--</script>-->
+    <% if(error) { %>
+        <div class="alert alert-danger">
+            <strong>Error!</strong> Wrong URL, please enter a valid url of eBay item page
+            <script>show_error()</script>
+        </div>
+    <% } else { %>
+        <% if(feedback_arr.length > 0) { %>
+            <% feedback_arr.forEach(function(feedback) { %>
+            <ul class="list-group">
+                <div class="feedback_list">
+                    <% if(feedback.rating == 'positive') { %>
+                        <li class="list-group-item list-group-item-success"><%= feedback.feedback %></li>
+                        <li class="list-group-item list-group-item-info"><%= feedback.when %></li>
+                    <% } else if(feedback.rating == 'negative'){ %>
+                        <li class="list-group-item list-group-item-danger"><%= feedback.feedback %></li>
+                        <li class="list-group-item list-group-item-info"><%= feedback.when %></li>
+                    <% } else { %>
+                        <li class="list-group-item list-group-item-warning"><%= feedback.feedback %></li>
+                        <li class="list-group-item list-group-item-info"><%= feedback.when %></li>
+                    <% } %>
+                </div>
+            </ul>
+            <% }); %>
+        <% } else { %>
+            <div id="msg">
+                <div class="alert alert-danger">
+                    <strong>No Feedback Found!</strong> Try choosing different type of search
+                    or there are no feedback for this item.
+                    <script>show_error()</script>
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+
+</div>

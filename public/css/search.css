@@ -1,0 +1,33 @@
+#container_search{
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+.list-group{
+    margin-bottom: 10px;
+}
+
+.list-group li:first-child{
+    font-weight: bold;
+    float: left;
+    width:500px;
+}
+
+.list-group li:last-child{
+    font-weight: bold;
+    float: left;
+    width:220px;
+}
+
+.feedback_list{
+    display: inline-block;
+    margin: auto;
+}
+
+.alert{
+    position: static;
+    width: 750px;
+    display: none;
+    margin: auto;
+}

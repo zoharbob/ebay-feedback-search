@@ -1,0 +1,103 @@
+#container{
+    width: 100%;
+    padding: 20px;
+    background-color: #adadad;
+}
+
+#btn_inst{
+    float: left;
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+}
+
+#btn_inst:hover{
+    background-color: #5aaecd;
+    border-color: #5aaecd;
+}
+
+.col-lg-6{
+    max-width: 80%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.input-group{
+    width: 100%;
+
+}
+
+.custom-select{
+    float: left;
+}
+
+.form-control{
+    width: 100%;
+}
+
+h1{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight:bold;
+    font-size: 50px;
+    font-family: "Calisto MT";
+    border-radius: 36px;
+
+}
+h1 span{
+    color: red;
+    padding: 5px;
+    font-weight: normal;
+    font-size: 60px;
+}
+
+.btn-secondary{
+    background: #0275d8;
+    color: #fff;
+    border-color: #0275d8;
+}
+.btn-secondary:hover{
+    background: #0261bd;
+    color: #fff;
+    border-color: #0261bd;
+}
+.input-group-btn{
+    display: inline-block;
+}
+#paste{
+    background: #fff;
+    color: black;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    /*top: 100px;*/
+    top:10px;
+    left: 45%;
+    display: none;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.alert{
+    position: relative;
+    left: 35%;
+    top: 100px;
+    width: 500px;
+    display: none;
+}
