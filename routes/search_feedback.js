@@ -136,7 +136,6 @@ app.get('/url_analyse', function(req, res) {
                 var data = $(this);
 
                 itemName = data.contents().get(1).nodeValue;
-
             });
 
             $('.mbg-nw').filter(function () {
