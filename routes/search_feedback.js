@@ -57,28 +57,29 @@ app.get('/search_feedback', function(req, res) {
                         var data = $(this);
 
                         itemParse = data.children().eq(1).text(); // get item name
-                        itemParse = itemParse.substring(0, itemParse.lastIndexOf(" ")); // extract the item number
+                        itemParse = itemParse.substring(0, itemParse.lastIndexOf(" ")); // Parse the itemName (without the item number)
 
                         if(itemParse.trim() == itemName){
                             // feedback_arr.push(data.parent().prev().children().first().next().text());
                             if(data.prev().prev().hasClass('fbOuterAddComm')){
                                 var feedback = data.prev().prev().children().eq(1).text();
-                                var rating =  data.prev().prev().children().children().attr('alt');
+                                var rating =  data.prev().prev().children().children().attr('src');
                                 var when =  data.prev().prev().children().last().text();
                             } else{
                                 var feedback = data.prev().children().first().next().text();
-                                var rating = data.prev().children().first().children().first().attr('alt');
+                                var rating = data.prev().children().first().children().first().attr('src');
                                 var when = data.prev().children().last().text();
                             }
-                            if(rating.includes('Negative')){
+                            if(rating.includes('iconNeg')){
                                 rating = 'negative';
                             }
-                            else if(rating.includes('Positive')){
+                            else if(rating.includes('iconPos')){
                                 rating = 'positive';
                             }
                             else {
                                 rating = 'natural';
                             }
+
                             feedback_arr.push({feedback, rating, when});
                             // feedback_arr.push(new Feedback(feedback));
                         }
@@ -110,7 +111,14 @@ app.get('/', function(req, res) {
 
 app.get('/url_analyse', function(req, res) {
 
-    var url = req.query.url_input;
+    var itemNumber = parseInt(req.query.url_input);
+
+    var url;
+    if(Number.isInteger(itemNumber) && itemNumber.toString().length == 12){
+        url = "http://www.ebay.com/itm/" + req.query.url_input;
+    } else{
+        url = req.query.url_input;
+    }
 
     var method_select = req.query.method_select;
 
