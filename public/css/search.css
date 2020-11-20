@@ -21,7 +21,7 @@
 }
 
 .feedback_list{
-    display: inline-block;
+    display: flex;
     margin: auto;
 }
 

@@ -38,26 +38,29 @@ app.get('/search_feedback', function(req, res) {
                     //     this.when = when;
                     // }
 
-                    $('.pg-cw span:last-child').filter(function () {
+                    $('.pagination__items').filter(function () {
 
                         var data = $(this);
-                        var page_text = data.text();
-
-                        var arr = page_text.split(" ");
-                        num_of_pages = arr[arr.length - 1];
-                        num_of_pages = parseInt(num_of_pages);
+                        num_of_pages = data[0].children.length;
 
                         if(num_of_pages <= method_select) {
                             method_select = num_of_pages;
                         }
                     });
 
-                    $('.bot').filter(function () {
+                    $('.card__feedback-container').filter(function () {
 
                         var data = $(this);
 
-                        itemParse = data.children().eq(1).text(); // get item name
-                        itemParse = itemParse.substring(0, itemParse.lastIndexOf(" ")); // Parse the itemName (without the item number)
+                        const cardFeedback = data.find('.card__feedback');
+                        const cardRating = data.find('.card__rating');
+
+                        const cardFeedbackItem = cardFeedback.find('.card__item');
+
+                        if(cardFeedbackItem[0]) {
+                            itemParse = cardFeedbackItem[0].firstChild.children[0].data; // get item name
+                            itemParse = itemParse.substring(0, itemParse.lastIndexOf(" ")); // Parse the itemName (without the item number)
+                        }
 
                         if(itemParse.trim() == itemName){
                             // feedback_arr.push(data.parent().prev().children().first().next().text());
@@ -66,15 +69,15 @@ app.get('/search_feedback', function(req, res) {
                                 var rating =  data.prev().prev().children().children().attr('src');
                                 var when =  data.prev().prev().children().last().text();
                             } else{
-                                var feedback = data.prev().children().first().next().text();
-                                var rating = data.prev().children().first().children().first().attr('src');
-                                var when = data.prev().children().last().text();
+                                var feedback = cardFeedback.find('.card__comment')[0].firstChild.childNodes[0].data;
+                                var rating = cardRating[0].firstChild.attribs['aria-label'];
+                                var when = data[0].parent.parent.lastChild.firstChild.firstChild.firstChild.data;
                             }
-                            if(rating.includes('iconNeg')){
-                                rating = 'negative';
-                            }
-                            else if(rating.includes('iconPos')){
+                            if(rating.toLowerCase().includes('positive')){
                                 rating = 'positive';
+                            }
+                            else if(rating.toLowerCase().includes('negative')){
+                                rating = 'negative';
                             }
                             else {
                                 rating = 'natural';
